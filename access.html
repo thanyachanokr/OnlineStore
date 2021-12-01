@@ -72,7 +72,7 @@
                 <ul class="nav navbar-dark" style="background-color: #db81ff;">
                     <li class="nav-item mr-2"><a href="home.html" class="btn btn-custom">HOME</a></li>
                     <li class="nav-item"><a href="keyboard.html" class="btn btn-custom">KEYBOARDS</a></li>
-                    <li class="nav-item" v-on:click="ShowAcc"><a href="#" class="btn btn-custom">ACCESSORIES</a></li>
+                    <li class="nav-item"><a href="access.html" class="btn btn-custom">ACCESSORIES</a></li>
                     <li class="nav-item"><a href="help.html" class="btn btn-custom">HELP</a></li>
                     <li class="nav-item"><a href="contact.html" class="btn btn-custom">CONTACT US</a></li>
                 </ul>
@@ -82,7 +82,7 @@
             <main class="flex-shrink-0 mt-5">
                 <div class="container" v-if="product_page">
                     <div class="row justify-content-center">
-                        <h5>All Keyboards</h5>
+                        <h5>All Accessories</h5>
                     </div>
                     <hr />
                     <div class="home container mb-5">
@@ -92,27 +92,6 @@
                                     class="row equal row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4">
                                     <Product v-on:add-item="addItem" v-for="product in products" :product="product"
                                         :key="product.id" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row justify-content-center mb-5">
-                            <a class="btn btn-custom" v-on:click="ShowMyCart" href="#">Check Out</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="container" v-if="acc_page">
-                    <div class="row justify-content-center">
-                        <h5>All Accessories</h5>
-                    </div>
-                    <hr />
-                    <div class="home container mb-5">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div
-                                    class="row equal row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4">
-                                    <acc v-on:add-item="addItem2" v-for="product in acc" :product="acc"
-                                        :key="acc.id" />
                                 </div>
                             </div>
                         </div>
@@ -142,6 +121,7 @@
                         </div>
                     </div>
                 </div>
+                
             </main>
         </div>
     </div>
@@ -173,25 +153,6 @@
             </div>
         </div>
     </template>
-
-    <template id="acc-template">
-        <div class="col mb-4 d-flex">
-            <div class="card">
-                <img :src="acc.url" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h6 class="card-title">{{acc.name}}</h6>
-                    <p class="card-text text-danger"><b>
-                        {{acc.price}} THB</b>
-                    </p>
-                    <p class="card-text"><small>{{acc.shortdesc}}</small>
-                    </p>
-                    <!-- Attach onclick event to addToCart method -->
-                    <button @click="addToCart()" class="btn btn-custom btn-block align-bottom">Add to cart</button>
-                </div>
-            </div>
-        </div>
-    </template>
-
     <!-- Create template with id cart-item template -->
     <template id="cartitem-template">
         <div class="p-3 m-2 border rounded">
@@ -209,6 +170,7 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <script src="https://unpkg.com/vue@next"></script>
+    <!-- <script src="https://unpkg.com/vuex@4.0.0/dist/vuex.global.js"></script> -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
         let app = Vue.createApp({
@@ -217,103 +179,44 @@
                 return {
                     product_page: true,
                     cart_page: false,
-                    acc_page : false,
                     products: [{
                         id: 1,
-                        name: "Keychron Q1",
-                        price: 5990,
-                        shortdesc: "75%, Hot-Swappable, RGB",
-                        url: "https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2021/11/Product/keychron-q1-wireless-mechanical-keyboard-th-en-black-red-switch-01.jpg"
-                    }, {
-                        id: 2,
-                        name: "Loga Yaksa PRO Printstream",
-                        price: 3350,
-                        shortdesc: "TKL, RGB, Hot-Swappable",
-                        url: "https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2021/11/Product/loga-yaksa-pro-printstream-tkl-mechanical-keyboard-en-01.jpg"
-                    }, {
-                        id: 3,
-                        name: "Royal Kludge RK68 White",
-                        price: 1750,
-                        shortdesc: "65%, Hot-Swappable, RGB",
-                        url: "https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2021/06/Royal%20Kludge/RK_RK68_WH_1.PNG"
-                    }, {
-                        id: 4,
-                        name: "Razer BlackWidow V3",
-                        price: 7090,
-                        shortdesc: "65%, Razer Chroma RGB",
-                        url: "https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2021/08/Product/razer-blackwidow-v3-mini-hyperspeed-us-wireless-mechanical-gaming-keyboard-phantom-yellow-switch-01.jpg"
-                    }, {
-                        id: 5,
-                        name: "Leopold FC980M",
-                        price: 4590,
-                        shortdesc: "Compact, Cherry Switches, RGB",
-                        url: "https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2020/12/LEOPOLD-FC980M-PD-White-Blue-Star-1.jpg"
-                    }, {
-                        id: 6,
-                        name: "Nubwo X30 Terminator",
-                        price: 1350,
-                        shortdesc: "Full-Size, Outemu Switches, RGB",
-                        url: "https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2020/04/NUBWO-X30-TERMINATOR-White-1.jpg"
-                    }, {
-                        id: 7,
-                        name: "Anne Pro 2",
-                        price: 2990,
-                        shortdesc: "65%, Blue Switch, RGB",
-                        url: "https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2021/06/Product/Tum's/AP2_WH_Case_1.jpg"
-                    }, {
-                        id: 8,
-                        name: "Steelseries Apex 7 Ghost",
-                        price: 6990,
-                        shortdesc: "TKL, RGB, Limited Edition",
-                        url: "https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2021/10/Product/steelseries-apex-7-tkl-ghost-mechanical-gaming-keyboard-en-white-red-switch-01.jpg"
-                    }],
-                    cart: []
-                }
-            },
-
-            data2: function () {
-                return {
-                    product_page: false,
-                    cart_page: false,
-                    acc_page : true,
-                    acc: [{
-                        id: 9,
                         name: "Gateron Red Switch",
                         price: 650,
                         shortdesc: "Linear, Quiet, Actuation Force 45 g",
                         url: "https://cdn.shopify.com/s/files/1/0059/0630/1017/t/5/assets/pf-2bb5248f--Gateronredswitchkeychronmechanicalkeyboard1.jpg?v=1612263618"
                     }, {
-                        id: 10,
+                        id: 2,
                         name: "Gateron Blue Switch",
                         price: 650,
                         shortdesc: "Clicky, Loud, Actuation Force 60 g",
                         url: "https://cdn.shopify.com/s/files/1/0059/0630/1017/t/5/assets/pf-95608e2b--Gateronblueswitchkeychronmechanicalkeyboard1.jpg?v=1612263601"
                     }, {
-                        id: 11,
+                        id: 3,
                         name: "Gateron Brown Switch",
                         price: 650,
                         shortdesc: "Tactile, Medium, ActuationForce 55g",
                         url: "https://cdn.shopify.com/s/files/1/0059/0630/1017/t/5/assets/pf-608e2bb5--Gateronbrownswitchkeychronmechanicalkeyboard1.jpg?v=1612263607"
                     }, {
-                        id: 12,
+                        id: 4,
                         name: "Gateron White Switch",
                         price: 650,
                         shortdesc: "Linear, Quiet, Actuation Force 45 g",
                         url: "https://cdn.shopify.com/s/files/1/0059/0630/1017/t/5/assets/pf-b5248f16--Gateronwhiteswitchkeychronmechanicalkeyboard1.jpg?v=1612263623"
                     }, {
-                        id: 13,
+                        id: 5,
                         name: "Gateron Yellow Switch",
                         price: 650,
                         shortdesc: "Linear, Quiet, Actuation Force 50 g",
                         url: "https://cdn.shopify.com/s/files/1/0059/0630/1017/t/5/assets/pf-248f1633--Gateronyellowswitchkeychronmechanicalkeyboard1.jpg?v=1612263630"
                     }, {
-                        id: 14,
+                        id: 6,
                         name: "Gateron Black Switch",
                         price: 650,
                         shortdesc: "Linear, Medium, ActuationForce 50g",
                         url: "https://cdn.shopify.com/s/files/1/0059/0630/1017/t/5/assets/pf-cb95608e--Gateronblackswitchkeychronmechanicalkeyboard1.jpg?v=1612263594"
                     }, {
-                        id: 15,
+                        id: 7,
                         name: "Gateron Green Switch",
                         price: 650,
                         shortdesc: "Clicky, Loud, Actuation Force 80 g",
@@ -322,7 +225,6 @@
                     cart: []
                 }
             },
-
             mounted: function () {
 
             },
@@ -346,23 +248,6 @@
                     }
                     console.log(this.cart)
                 },
-                addItem2: function (id) {
-                    item = this.cart.find(product => product.id == id)
-                    if (item) {
-                        item.subtotal += item.price
-                        item.count += 1
-                    } else {
-                        item = this.acc.find(product => product.id == id)
-                        this.cart.push({
-                            id: item.id,
-                            name: item.name,
-                            price: item.price,
-                            subtotal: item.price,
-                            count: 1
-                        })
-                    }
-                    console.log(this.cart)
-                },
                 removeItem: function (id) {
                     item = this.cart.find(item => item.id == id)
                     idx = this.cart.indexOf(item)
@@ -372,16 +257,9 @@
                 ShowMyCart: function () {
                     this.cart_page = true
                     this.product_page = false
-                    this.acc_page = false
                 },
                 ShowHomePage: function () {
                     this.product_page = true
-                    this.cart_page = false
-                    this.acc_page = false
-                },
-                ShowAcc: function () {
-                    this.acc_page = true
-                    this.product_page = false
                     this.cart_page = false
                 }
             },
@@ -429,21 +307,6 @@
                     this.$emit("remove-item", this.item.id)
                 }
             }
-        });
-
-        app.component('Access', {
-            data2: function () {
-                return {}
-            },
-            props: ['product'],
-            template: "#acc-template",
-
-            methods: {
-
-                addToCart: function () {
-                    this.$emit("add-item", this.product.id)
-                },
-            },
         });
 
         app.mount("#app")

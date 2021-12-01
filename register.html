@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+
+
+    <link rel="stylesheet" href="allstyle.css">
+
+    <!-- Tab Name -->
+    <title>Mackeynique</title>
+
+</head>
+
+<body>
+
+    <!-- Nav Bar -->
+    <nav class="navbar navbar-dark bg-dark">
+        <!-- Logo and Brand -->
+        <a class="navbar-brand" href="home.html">
+            <img src="image/icon.png" width="50" height="50" class="d-inline-block align-center ml-4 mr-2" alt="">
+            <b> MKN</b>
+        </a>
+
+        <ul class="nav navbar-dark bg-dark">
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-custom mr-2 my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <li class="nav-item mr-2"><a href="login.php" class="btn btn-custom">Login</a></li>
+            <li class="nav-item"><a href="register.php" class="btn btn-custom">Register</a></li>
+        </ul>
+    </nav>
+
+    <!-- Login Section -->
+    <div class="row mt-5 mb-5">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+            <div class="card-wrapper">
+                <div class="card fat">
+                    <div class="card-body">
+                        <h4 class="card-title">Register</h4>
+                        <!-- Login -->
+                        <form action="login.php" method="post" class="px-4 py-3">
+                            <div class="form-group">
+                                <label>Title</label>
+                                <select name="title">
+                                    <option value="Mr.">Mr.</option>
+                                    <option value="Mrs.">Mrs.</option>
+                                    <option value="Ms.">Ms.</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Firstname</label>
+                                <input type="text" name="firstname" id="first_name" class="form-control"
+                                    placeholder="Firstname">
+                            </div>
+                            <div class="form-group">
+                                <label>Lastname</label>
+                                <input type="text" name="lastname" id="last_name" class="form-control"
+                                    placeholder="Lastname">
+                            </div>
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <input type="radio" name="gender" value="male">Male
+                                <input type="radio" name="gender" value="female">Female
+                                <input type="radio" name="gender" value="lgbtq">LGBTQ+
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="text" name="email" id="email" class="form-control"
+                                    placeholder="Email address">
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="text" name="phone" id="phone" class="form-control"
+                                    placeholder="Phone number">
+                            </div>
+                            <div class="form-group">
+                                <label>Username</label>
+                                <input type="text" name="username" id="username" class="form-control"
+                                    placeholder="Username">
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" name="passwd" id="passwd" class="form-control"
+                                    placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <label>Confirm Password</label>
+                                <input type="password" name="cpasswd" id="cpasswd" class="form-control"
+                                    placeholder="Confirm Password">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-dark" value="submit" name='submit'>
+                            </div>
+                        </form>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="login.html">Already have an account? Sign in.</a>
+                        <a class="dropdown-item" href="#">Forgot password?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="navbar bg-dark py-3 bt-4">
+        <div class="container">
+            <div class="col-md-12 text-center">
+                <p class="mb-0 text-white">2021 Mackeynique. All rights reserved</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
